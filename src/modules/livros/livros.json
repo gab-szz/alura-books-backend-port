@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "nome": "Dom Casmurro",
+    "autor": "Machado de Assis",
+    "ano": 1899,
+    "genero": "Romance"
+  },
+  {
+    "id": 2,
+    "nome": "O Hobbit",
+    "autor": "J.R.R. Tolkien",
+    "ano": 1937,
+    "genero": "Fantasia"
+  },
+  {
+    "id": 3,
+    "nome": "1984",
+    "autor": "George Orwell",
+    "ano": 1949,
+    "genero": "Distopia"
+  },
+  {
+    "id": 4,
+    "nome": "A Revolução dos Bichos",
+    "autor": "George Orwell",
+    "ano": 1945,
+    "genero": "Fábula"
+  },
+  {
+    "id": 5,
+    "nome": "O Pequeno Príncipe",
+    "autor": "Antoine de Saint-Exupéry",
+    "ano": 1943,
+    "genero": "Infantil"
+  }
+]
