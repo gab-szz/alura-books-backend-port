@@ -62,30 +62,37 @@ describe("LivrosService", () => {
     // Teste 3: Buscar livros por nome
     it("deve retornar livros filtrados por nome", async () => {
       // ARRANGE
-      const filtros = { nome: "1984" }; // Substitua por um livro que existe no seu livros.json
+      const filtros = { nome: "1984" };
 
       // ACT
       const resultado = await livrosService.buscarLivros(filtros);
 
       // ASSERT
       expect(resultado).toBeDefined();
-      // Aqui você pode adicionar mais verificações:
-      // - Verificar se retornou apenas livros com aquele nome
-      // - Verificar se o array tem o tamanho esperado
-      // etc.
+      expect(Array.isArray(resultado)).toBe(true);
+      expect((resultado as ILivro[]).length).toBeGreaterThan(0);
+      expect(
+        (resultado as ILivro[]).every((livro) => livro.nome.includes("1984"))
+      ).toBe(true);
     });
 
     // Teste 4: Buscar livros por autor
     it("deve retornar livros filtrados por autor", async () => {
       // ARRANGE
-      const filtros = { autor: "George Orwell" }; // Substitua por um autor que existe
+      const filtros = { autor: "George Orwell" };
 
       // ACT
       const resultado = await livrosService.buscarLivros(filtros);
 
       // ASSERT
       expect(resultado).toBeDefined();
-      // Adicione mais verificações aqui
+      expect(Array.isArray(resultado)).toBe(true);
+      expect((resultado as ILivro[]).length).toBeGreaterThan(0);
+      expect(
+        (resultado as ILivro[]).every((livro) =>
+          livro.autor.includes("George Orwell")
+        )
+      ).toBe(true);
     });
 
     // Teste 5: Buscar com múltiplos filtros
