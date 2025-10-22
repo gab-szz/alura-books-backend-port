@@ -64,21 +64,21 @@ Embora baseado no curso da Alura, este projeto possui **implementações persona
 
 ### Core
 
-| Tecnologia    | Versão | Descrição                              |
-| ------------- | ------ | -------------------------------------- |
-| **Node.js**   | 22+    | Runtime JavaScript                     |
-| **TypeScript**| 5.7.3  | Superset JavaScript com tipagem        |
-| **Fastify**   | 5.6.1  | Framework web ultra-rápido             |
-| **Zod**       | 4.1.12 | Validação de schemas TypeScript-first  |
+| Tecnologia     | Versão | Descrição                             |
+| -------------- | ------ | ------------------------------------- |
+| **Node.js**    | 22+    | Runtime JavaScript                    |
+| **TypeScript** | 5.7.3  | Superset JavaScript com tipagem       |
+| **Fastify**    | 5.6.1  | Framework web ultra-rápido            |
+| **Zod**        | 4.1.12 | Validação de schemas TypeScript-first |
 
 ### Desenvolvimento
 
-| Tecnologia      | Versão | Descrição                          |
-| --------------- | ------ | ---------------------------------- |
-| **Jest**        | 30.2.0 | Framework de testes                |
-| **ts-jest**     | 29.2.5 | Preset Jest para TypeScript        |
-| **tsx**         | 4.20.6 | TypeScript executor (dev)          |
-| **@fastify/cors** | 11.1.0 | Plugin CORS para Fastify         |
+| Tecnologia        | Versão | Descrição                   |
+| ----------------- | ------ | --------------------------- |
+| **Jest**          | 30.2.0 | Framework de testes         |
+| **ts-jest**       | 29.2.5 | Preset Jest para TypeScript |
+| **tsx**           | 4.20.6 | TypeScript executor (dev)   |
+| **@fastify/cors** | 11.1.0 | Plugin CORS para Fastify    |
 
 ---
 
@@ -142,7 +142,7 @@ alura-books-backend/
 export function criarModuloLivros() {
   const livrosService = new LivrosService();
   const livrosController = new LivrosController(livrosService);
-  
+
   return { livrosController, livrosService };
 }
 
@@ -154,6 +154,7 @@ export async function registrarModulos(fastify: FastifyInstance) {
 ```
 
 **Vantagens:**
+
 - ✅ Facilita testes (mock de dependências)
 - ✅ Baixo acoplamento entre camadas
 - ✅ Facilita manutenção e escalabilidade
@@ -168,10 +169,10 @@ Retorna a lista de livros, com filtros opcionais.
 
 #### Query Parameters
 
-| Parâmetro | Tipo   | Descrição                    | Obrigatório |
-| --------- | ------ | ---------------------------- | ----------- |
-| `nome`    | string | Filtra por nome do livro     | Não         |
-| `autor`   | string | Filtra por nome do autor     | Não         |
+| Parâmetro | Tipo   | Descrição                | Obrigatório |
+| --------- | ------ | ------------------------ | ----------- |
+| `nome`    | string | Filtra por nome do livro | Não         |
+| `autor`   | string | Filtra por nome do autor | Não         |
 
 #### Exemplos de Requisição
 
@@ -301,10 +302,10 @@ Snapshots:   0 total
 it("deve retornar livros filtrados por nome", async () => {
   // ARRANGE (preparar)
   const filtros = { nome: "1984" };
-  
+
   // ACT (agir)
   const resultado = await livrosService.buscarLivros(filtros);
-  
+
   // ASSERT (afirmar)
   expect(resultado).toBeDefined();
   expect(resultado!.length).toBeGreaterThan(0);
@@ -324,7 +325,7 @@ type ILivro = {
   autor: string;
   ano: number;
   genero: string;
-}
+};
 ```
 
 ### Livros Disponíveis
@@ -420,7 +421,7 @@ Este projeto me permitiu desenvolver e aprimorar:
 
 ```typescript
 fastify.register(cors, {
-  origin: true,  // Permite qualquer origem
+  origin: true, // Permite qualquer origem
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
 });
 ```
@@ -429,7 +430,7 @@ fastify.register(cors, {
 
 ```typescript
 fastify.register(cors, {
-  origin: "https://seu-dominio.com",  // Apenas seu frontend
+  origin: "https://seu-dominio.com", // Apenas seu frontend
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 });
