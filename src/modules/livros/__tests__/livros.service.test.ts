@@ -108,7 +108,14 @@ describe("LivrosService", () => {
 
       // ASSERT
       expect(resultado).toBeDefined();
-      // Adicione verificações específicas
+      expect(Array.isArray(resultado)).toBe(true);
+      expect((resultado as ILivro[]).length).toBeGreaterThan(0);
+      expect(
+        (resultado as ILivro[]).every(
+          (livro) =>
+            livro.nome.includes("1984") && livro.autor.includes("George Orwell")
+        )
+      ).toBe(true);
     });
 
     // Teste 6: Buscar com filtro que não existe
@@ -120,9 +127,43 @@ describe("LivrosService", () => {
       const resultado = await livrosService.buscarLivros(filtros);
 
       // ASSERT
-      // Aqui você precisa verificar o comportamento esperado
-      // O que seu service deve retornar quando não encontra nada?
-      // Ajuste conforme seu código
+      expect(resultado).toBeDefined();
+      expect(Array.isArray(resultado)).toBe(true);
+      expect((resultado as ILivro[]).length).toBe(0);
+    });
+
+    // Teste 7: Buscar por parte do nome
+    it("deve retornar livros quando o filtro é parte do nome", async () => {
+      // ARRANGE
+      const filtros = { nome: "Hobbit" };
+
+      // ACT
+      const resultado = await livrosService.buscarLivros(filtros);
+
+      // ASSERT
+      expect(resultado).toBeDefined();
+      expect(Array.isArray(resultado)).toBe(true);
+      expect((resultado as ILivro[]).length).toBeGreaterThan(0);
+      expect(
+        (resultado as ILivro[]).every((livro) => livro.nome.includes("Hobbit"))
+      ).toBe(true);
+    });
+
+    // Teste 8: Buscar por parte do autor
+    it("deve retornar livros quando o filtro é parte do autor", async () => {
+      // ARRANGE
+      const filtros = { autor: "Orwell" };
+
+      // ACT
+      const resultado = await livrosService.buscarLivros(filtros);
+
+      // ASSERT
+      expect(resultado).toBeDefined();
+      expect(Array.isArray(resultado)).toBe(true);
+      expect((resultado as ILivro[]).length).toBe(2); // George Orwell tem 2 livros
+      expect(
+        (resultado as ILivro[]).every((livro) => livro.autor.includes("Orwell"))
+      ).toBe(true);
     });
   });
 });
